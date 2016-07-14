@@ -39,6 +39,7 @@ app.use(function sessionMiddleware (req, res, next) {
 });
 */
 
+
 router.use(passport.initialize()); // this adds things to the req object, such as .login and .logout
 router.use(passport.session()); // this is where deserialize actually happens, req.user gets established
 /*
@@ -69,5 +70,13 @@ passport.deserializeUser(function (id, assignReqUserProperty) {
   })
   .catch(assignReqUserProperty);
 });
+
+// router.use(function(req,res,next){
+//   console.log('USERRRRRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', req.user)
+//   // req.session.userId = req.user.id
+// })
+
+
+
 
 module.exports = router;

@@ -47,7 +47,13 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.put('/:id', function (req, res, next) {
-  req.story.update(req.body)
+  User.findById(req.session.passport.user)
+  .then(function (user){
+    if(user.isAdmin || user.id === req.params.id){
+      return req.story.update(req.body)
+    }
+    else throw new Error('not your story bitch!')
+  })
   .then(function (story) {
     res.json(story);
   })
@@ -55,7 +61,14 @@ router.put('/:id', function (req, res, next) {
 });
 
 router.delete('/:id', function (req, res, next) {
-  req.story.destroy()
+  console.log(req.session, req.user)
+  User.findById(req.session.passport.user)
+  .then(function(user){
+    if(user.isAdmin){
+      return req.story.destroy()
+    }
+    else throw new Error('not an admin')
+  })
   .then(function () {
     res.status(204).end();
   })
