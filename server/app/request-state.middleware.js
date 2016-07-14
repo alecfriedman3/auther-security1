@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 var router = require('express').Router();
 var sessionMiddleware = require('express-session');
@@ -19,7 +19,7 @@ router.use(function (req, res, next) {
 });
 
 router.use(sessionMiddleware({
-  secret: 'tongiscool'
+  secret: 'nonferrousDiseaseAnodizingUtricle'
 }));
 
 /*
