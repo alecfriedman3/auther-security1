@@ -6,7 +6,7 @@ var User = require('../api/users/user.model');
 
 module.exports = new GoogleStrategy({
   clientID: '664886113879-nfusui7qu8ljo61dqlghjla02rfmdb58.apps.googleusercontent.com',
-  clientSecret: 'bNOmSPLDkp3jIOauBzOYjvH2',
+  clientSecret: require('../../secret').googSecret,
   callbackURL: '/auth/google/callback'
 }, function (token, refreshToken,  profile, triggerSerializationOfUser) {
   // this only runs when somebody logs in through google

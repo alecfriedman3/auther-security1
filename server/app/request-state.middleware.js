@@ -19,7 +19,7 @@ router.use(function (req, res, next) {
 });
 
 router.use(sessionMiddleware({
-  secret: 'nonferrousDiseaseAnodizingUtricle'
+  secret: require('../../secret').secret1
 }));
 
 /*
